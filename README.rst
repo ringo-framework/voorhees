@@ -18,11 +18,16 @@ Voorhees
      :alt: Updates
 
 
-JSON decoding and encoding
+Voorhees is a simple library to decode and encode Python data types from and
+to JSON. Voorhees extends the basic decoding and encoding capabilities of the
+standard JSON encoder and decoder and adds support for more data types.
+
+Voorhees is named after the main character from the Friday the 13th series
+Jason Voorhees.
 
 
 * Free software: MIT license
-* Documentation: https://voorhees.readthedocs.io.
+.. * Documentation: https://voorhees.readthedocs.io.
 
 
 Features
