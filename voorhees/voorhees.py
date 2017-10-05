@@ -18,6 +18,16 @@ except NameError:
     basestring = str
 
 
+def prettify(json_data):
+    """Prettifies the json. Add indention and key sorting
+
+    :json_data: JSON string
+    :returns: Formatted JSON string
+
+    """
+    return to_json(from_json(json_data), indent=4, sort_keys=True)
+
+
 def _json_deserial_hook(json_data):
     """JSON deserializer for objects not deserializable by default json
     code. Currently this is only `date` and `datetime`. Used in
@@ -63,11 +73,14 @@ def _json_serial_hook(obj):
     raise TypeError("Type %s not serializable" % type(obj))
 
 
-def to_json(dictionary):
+def to_json(dictionary, indent=None, sort_keys=False):
     """Will convert a given a dictionary with python values into a JSON
     string
 
     :json: Dictionary with values.
     :returns: JSON string.
     """
-    return json.dumps(dictionary, default=_json_serial_hook)
+    return json.dumps(dictionary,
+                      default=_json_serial_hook,
+                      indent=indent,
+                      sort_keys=sort_keys)
