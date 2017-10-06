@@ -66,6 +66,8 @@ def _json_serial_hook(obj):
     :returns: Serialized value.
     """
 
+    if hasattr(obj, "__json__"):
+        return obj.__json__()
     if isinstance(obj, (datetime, date)):
         return obj.isoformat()
     if isinstance(obj, (uuid.UUID)):
@@ -73,14 +75,14 @@ def _json_serial_hook(obj):
     raise TypeError("Type %s not serializable" % type(obj))
 
 
-def to_json(dictionary, indent=None, sort_keys=False):
+def to_json(obj, indent=None, sort_keys=False):
     """Will convert a given a dictionary with python values into a JSON
     string
 
     :json: Dictionary with values.
     :returns: JSON string.
     """
-    return json.dumps(dictionary,
+    return json.dumps(obj,
                       default=_json_serial_hook,
                       indent=indent,
                       sort_keys=sort_keys)
