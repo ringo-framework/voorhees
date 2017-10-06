@@ -30,10 +30,13 @@ Jason Voorhees.
 .. * Documentation: https://voorhees.readthedocs.io.
 
 
-Features
---------
+Supported formats
+-----------------
 
-* TODO
+* Date (ISO 8601)
+* Datetime (ISO 8601 format, YYYY-MM-DDTHH:MM:SS.mmmmmm)
+* UUID
+
 
 Credits
 ---------
